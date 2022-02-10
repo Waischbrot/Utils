@@ -1,25 +1,3 @@
-package de.rubymc.rubyapi.utils;
-
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.properties.Property;
-import org.bukkit.Color;
-import org.bukkit.DyeColor;
-import org.bukkit.Material;
-import org.bukkit.craftbukkit.libs.org.codehaus.plexus.util.Base64;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BannerMeta;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.LeatherArmorMeta;
-import org.bukkit.inventory.meta.SkullMeta;
-
-import java.io.File;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
 public class ItemBuilder {
 
     private ItemStack stack;
