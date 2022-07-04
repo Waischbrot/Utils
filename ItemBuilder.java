@@ -21,7 +21,7 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder setGlow (boolean glow) {
+    public ItemBuilder setGlow(boolean glow) {
         if (glow) {
             addEnchant(Enchantment.KNOCKBACK, 1);
             addItemFlag(ItemFlag.HIDE_ENCHANTS);
@@ -34,14 +34,14 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder setUnbreakable (boolean unbreakable) {
+    public ItemBuilder setUnbreakable(boolean unbreakable) {
         ItemMeta meta = stack.getItemMeta();
         meta.setUnbreakable(unbreakable);
         stack.setItemMeta(meta);
         return this;
     }
 
-    public ItemBuilder setBannerColor (DyeColor color) {
+    public ItemBuilder setBannerColor(DyeColor color) {
         BannerMeta meta = (BannerMeta) stack.getItemMeta();
         meta.setBaseColor(color);
         setItemMeta(meta);
@@ -58,8 +58,18 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder setHead(String owner) {
+    public ItemBuilder setPlayerHead(OfflinePlayer player) {
         SkullMeta meta = (SkullMeta) stack.getItemMeta();
+
+        meta.setOwningPlayer(player);
+
+        setItemMeta(meta);
+        return this;
+    }
+
+    public ItemBuilder setNameHead(String owner) {
+        SkullMeta meta = (SkullMeta) stack.getItemMeta();
+
         meta.setOwner(owner);
         setItemMeta(meta);
         return this;
@@ -72,7 +82,7 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder setItemStack (ItemStack stack) {
+    public ItemBuilder setItemStack(ItemStack stack) {
         this.stack = stack;
         return this;
     }
@@ -84,12 +94,12 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder getSkullBase(String base64EncodedString) {
+    public ItemBuilder setBase64Head(String base64EncodedString) {
         SkullMeta meta = (SkullMeta) stack.getItemMeta();
 
         assert meta != null;
 
-        GameProfile profile = new GameProfile(UUID.randomUUID(), (String)null);
+        GameProfile profile = new GameProfile(UUID.randomUUID(), (String) null);
         profile.getProperties().put("textures", new Property("textures", base64EncodedString));
         Field profileField = null;
 
@@ -121,7 +131,7 @@ public class ItemBuilder {
         return this;
     }
 
-    public ItemBuilder setLore (String lore) {
+    public ItemBuilder setLore(String lore) {
         ArrayList<String> loreList = new ArrayList<>();
         loreList.add(lore);
         ItemMeta meta = getItemMeta();
@@ -147,6 +157,4 @@ public class ItemBuilder {
     public ItemStack build() {
         return stack;
     }
-
 }
-
