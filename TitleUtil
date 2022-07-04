@@ -1,0 +1,16 @@
+public class TitleUtil {
+
+    public static void sendTitle(Player player, long fadeIn, long stay, long fadeOut, String title, String subtitle) {
+
+        final Component mainTitle = Component.text(MessageUtil.getMessageColour(title));
+        final Component subTitle = Component.text(MessageUtil.getMessageColour(subtitle));
+        final Title.Times times = Title.Times.of(Duration.ofMillis(fadeIn), Duration.ofMillis(stay), Duration.ofMillis(fadeOut));
+
+        final Title showTitle = Title.title(mainTitle, subTitle, times);
+        player.showTitle(showTitle);
+    }
+
+    public static void removeTitle(Player player) {
+        sendTitle(player, 0, 0, 0, "", "");
+    }
+}
